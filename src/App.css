@@ -1,0 +1,330 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* height: -webkit-fill-available; */
+}
+.container {
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  /* align-items: center; */
+  width: 320px;
+  color: #314d3e;
+  padding: 0.5em;
+  padding-top: 1em;
+  margin-top: 3em;
+  min-height: 550px;
+  /* border-radius: 15px;
+  border: 1px solid red; */
+}
+.navbar {
+  display: flex;
+  /* justify-content: space-around; */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  height: 3.5em;
+  border-bottom: 0.5px solid #cacbcd;
+  /* color: #fff; */
+  /* padding: 1em; */
+  /* border-bottom: 1px solid #314d3e; */
+}
+.navbar div{
+  margin: 0.5em;
+  padding: 0.2em;
+  /* border: none; */
+  font-size: 1rem;
+  /* border-bottom: 1px solid #314d3e; */
+}
+.navbar-username {
+  position: fixed;
+  left: -5px;
+}
+.navbar-username p{
+  font-size: 0.7rem;
+}
+.navbar-user-plan {
+  position: fixed;
+  right: 0.5em;
+  background-color: #eeeeed;
+  border-radius: 15px;
+  padding: 2em;
+}
+.navbar-user-plan p {
+  font-size: 0.8rem;
+  padding: 0 0.5em;
+}
+.navbar-user-plan:hover {
+  background-color: #dbdbd9;
+}
+.user-plan-upgrade {
+  position: absolute;
+  right: -1.25em;
+  top: 1em;
+  border-radius: 5px;
+  width: 5em;
+  color: #fff;
+  padding: 0;
+  background: #262626;
+  opacity: 1;
+  transition: opacity 1s;
+}
+.user-plan-upgrade p {
+  /* border: 1px solid red; */
+  padding: 0;
+  text-align: center;
+  font-size: 0.7rem;
+  
+}
+.navbar-active {
+ /* background: #314d3e; */
+  border-bottom: 1px solid #314d3e;
+  /* color: #fff; */
+}
+.lanter-plus {
+  /* border: 1px solid #1ac5f9; */
+  background-color: #edf4b9;
+  padding: 0.5em;
+  border-radius: 10px;
+}
+.main {
+  min-height: 440px;
+  /* border: 1px solid red; */
+}
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+/* .home .header {
+  text-align: center;
+} */
+.mybookmarks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  /* padding-top: 1em */
+  /* min-height: 550px; */
+  /* background-color: #314d3e; */
+}
+.search-bar {
+  margin-bottom: 0.5em;
+}
+
+.bookmarks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  /* min-height: 550px; */
+}
+.bookmarks input {
+  width: 100%;
+  /* margin: 1em 0; */
+  padding: 0.5em;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.bookmarks input[type="text"] {
+  background: #edf2f7;
+  font-family: 'Raleway', sans-serif;
+}
+
+.bookmarks input [type="text"]:focus {
+  background-color: rgba(171, 206, 203, 0.3);
+  outline: none;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px rgba(171, 206, 203, 0.3) inset !important;
+}
+
+.bookmarks input [type="text"] {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1em;
+}
+.bookmark {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #314d3e; */
+}
+.bookmark-image {
+  margin-right: 1em;
+  border-radius: 5px;
+}
+.ytp-bookmark-button-icon {
+  width: 80%;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.textbox {
+  width: 100%;
+  font-size: 12px;
+  margin: 0;
+  padding: 0px 2px;
+}
+
+.textbox:focus {
+  outline: 0;
+  border-color: #66afe9;
+}
+
+.bookmarks {
+  margin: 5px 5px;
+  padding: 3px;
+}
+
+.bookmark {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  border:1px solid transparent;
+  border-radius: 0.8rem;
+  /* padding: 3px;
+  padding-bottom: 7px;*/
+  margin-bottom: 7px; 
+  padding: 0.5em;
+  width: 100%;
+}
+.bookmark-screenshot {
+}
+/* .bookmark-screenshot:hover {
+  background-color: initial !important;
+} */
+.bookmark:hover {
+  background: rgba(136, 135, 135, 0.1);
+  /* border: 1px solid #ccc; */
+} 
+.bookmark-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 1em; */
+  /* border: 1px solid #ccc; */
+  width: 100%;
+}
+.bookmark-body {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+}
+.bookmark-timestamp {
+
+  cursor: pointer;
+}
+.bookmark-timestamp:hover {
+  color: #7a7a7a; 
+}
+
+.bookmark-title {
+  /* padding-left: 2px; */
+}
+.delete-btn, .segmenttext-btn {
+  /* display: none; */
+  background: none;
+  padding: 0;
+  border: none;
+  color: #333;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 30px;
+  /* border: 1px solid #ccc; */
+  width: 1.1em;
+  /* margin: 0 0.1em;  */
+
+}
+.delete-btn:hover, .segmenttext-btn:hover {
+  background: rgba(41, 23, 23, 0.1);
+
+}
+.bookmark-text {
+  white-space: pre-line;
+  /* padding: 0.5em; */
+}
+.bookmark-read-more {
+  color: #7a7a7a; 
+  cursor: pointer;
+}
+.bookmark-read-more:hover {
+  color: #000;  
+}
+.bookmark-controls img {
+  margin: 0 4px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+.bookmark-controls {
+  flex: auto;
+  text-align: right;
+}
+.google-auth {
+  width: 100%;
+  text-align: center;
+  /* border: 0.5px solid #a23636; */
+  padding: 0.5em;
+}
+.google-auth-btn {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  width: 100%;
+  padding: 0.5em;
+  /* margin: 0.5em; */
+  margin-top: 1.25em;
+  border-radius: 5px;
+  background-color: #fff;
+  border: 0.5px solid #ccc;
+  cursor: pointer;
+}
+.google-auth-btn:hover {
+  background-color: #f2f2f2;
+}
+.footer {
+  /* position: absolute; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1em;
+  background-color: #f2f2f2;
+  /* color: #fff; */
+  /* padding: 1em; */
+  border-top: 0.5px solid #cccbcb;
+}
+.contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: .5em;
+  border-top: 0.5px solid #cccbcb;
+  bottom: 0;
+}
+.contact div {
+  cursor: pointer;
+}
+.contact img {
+  margin:  0.5em;
+}

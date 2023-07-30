@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "QuoteReply ChatGPT",
+  "description": "Quote reply to ChatGPT.",
+  "version": "1.0.0",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Open",
+    "default_icon": {
+      "16": "assets/quotereply-chatgpt-icon-16.png",
+      "48": "assets/quotereply-chatgpt-icon-48.png",
+      "128": "assets/quotereply-chatgpt-icon-128.png"
+    }
+  },
+  "host_permissions": [
+    "https://chat.openai.com/*" 
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "assets/quotereply-chatgpt-icon-16.png",
+    "48": "assets/quotereply-chatgpt-icon-48.png",
+    "128": "assets/quotereply-chatgpt-icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://chat.openai.com/*"],
+      "js": ["content.js"],
+      "all_frames": false,
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/reply-solid.svg",
+        "assets/reply.svg"
+
+      ],
+      "matches": ["https://chat.openai.com/*"]
+    }
+  ],
+  "externally_connectable": {
+    "matches": []
+  },  
+    "permissions": [
+    "storage",
+    "tabs",
+    "scripting"
+  ] 
+}
