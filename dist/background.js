@@ -54,19 +54,19 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     );
     const chatId = tab.url.split("c/")[1];
     //console.log(chatId);
-    // if (
-    //   changeInfo.status === "complete" &&
-    //   tab.status === "complete" &&
-    //   tab.url !== undefined
-    // ) {
-    //   console.log("Page is fully loaded");
-    console.log("NEW chatId is being send from background.js");
-    chrome.tabs.sendMessage(tabId, {
-      url: tab.url,
-      type: "NEW",
-      chatId: chatId,
-    });
-    //}
+    if (
+      changeInfo.status === "complete" &&
+      tab.status === "complete" &&
+      tab.url !== undefined
+    ) {
+      console.log("Page is fully loaded");
+      console.log("NEW chatId is being send from background.js");
+      chrome.tabs.sendMessage(tabId, {
+        url: tab.url,
+        type: "NEW",
+        chatId: chatId,
+      });
+    }
   }
 });
 
@@ -76,7 +76,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 
-chrome.action.onClicked.addListener((tab) => {
-  console.log("Extension is clicked...");
-  chrome.tabs.create({ url: "https://chat.openai.com" }); // replace with your chat URL
-});
+// chrome.action.onClicked.addListener((tab) => {
+//   console.log("Extension is clicked...");
+//   chrome.tabs.create({ url: "https://chat.openai.com" }); // replace with your chat URL
+// });
