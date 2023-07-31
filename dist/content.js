@@ -202,13 +202,13 @@
       markdownDivs.forEach((markdownDiv) => {
         // Select all direct child p and pre elements
         let childElements = markdownDiv.querySelectorAll(
-          ":scope > p, :scope > pre"
+          ":scope > p, :scope > pre, :scope > ol, :scope > strong, :scope > li"
         );
         // Loop through each child element and append a button
         childElements.forEach((childElement) => {
           // Create a new button
           let replyButton = document.createElement("div");
-          const replyIcon = document.createElement("img");
+          let replyIcon = document.createElement("img");
           //btn.innerHTML = "Reply"; // Change this to whatever you want the button to say
           //replyButton.style.display = "inline-block";
           replyButton.style.padding = "0.25em";
@@ -236,6 +236,13 @@
             //console.log(parentText);
             simulateTyping(parentText);
           });
+
+          // childElement.addEventListener("dblclick", function () {
+          //   let elementText =
+          //     childElement.textContent || childElement.innerText;
+          //   console.log(elementText);
+          // });
+
           // Append the button to the child element
           if (childElement.tagName === "PRE") {
             // let childDiv = childElement.querySelector("div");
@@ -243,7 +250,72 @@
             //   // If there is a div inside the pre tag
             //   childDiv.appendChild(replyButton);
             // }
+          } else if (childElement.tagName === "OL") {
+            // If it is, get all of its 'li' children
+            let liElements = childElement.querySelectorAll("li");
+            //console.log(liElements);
+            // For each 'li', create a reply button and append it
+            liElements.forEach((li) => {
+              let liReplyButton = document.createElement("div");
+              let liReplyIcon = document.createElement("img");
+
+              liReplyButton.style.padding = "0.25em";
+              liReplyButton.style.borderRadius = "20px";
+              liReplyButton.style.width = "25px";
+              liReplyButton.style.height = "25px";
+              liReplyButton.className = "li-reply-button"; // Add any classes you want for styling
+              liReplyButton.title = "Reply Button";
+
+              liReplyIcon.src = chrome.runtime.getURL("assets/reply.svg");
+              liReplyIcon.as = "image";
+              liReplyIcon.style.width = "20px";
+              liReplyIcon.className = "li-reply-icon";
+              liReplyIcon.style.cursor = "pointer";
+              liReplyButton.append(liReplyIcon);
+              // Append the reply button to the 'li'
+              li.appendChild(liReplyButton);
+              //console.log("li: ", li);
+              liReplyButton.addEventListener("click", function () {
+                // Get the text content of the parent element
+                let elementText = li.textContent || li.innerText;
+                // Log or use the text
+                //console.log(parentText);
+                simulateTyping(elementText);
+              });
+              li.addEventListener("mouseenter", function () {
+                // Add a border to the parent element when the mouse hovers over the button
+                //childElement.style.border = "1px solid black";
+                li.style.borderRadius = "15px";
+
+                // Or change the background color
+                //childElement.style.backgroundColor = "#e8eaeb"; // Light gray background
+                li.style.backgroundColor = "#edf0f2"; // Light gray background
+              });
+
+              li.addEventListener("mouseleave", function () {
+                // Remove the border when the mouse leaves the button
+                //li.style.border = "";
+                // And reset the background color
+                li.style.backgroundColor = "";
+              });
+            });
           } else {
+            childElement.addEventListener("mouseenter", function () {
+              // Add a border to the parent element when the mouse hovers over the button
+              //childElement.style.border = "1px solid black";
+              childElement.style.borderRadius = "15px";
+
+              // Or change the background color
+              //childElement.style.backgroundColor = "#e8eaeb"; // Light gray background
+              childElement.style.backgroundColor = "#edf0f2"; // Light gray background
+            });
+
+            childElement.addEventListener("mouseleave", function () {
+              // Remove the border when the mouse leaves the button
+              childElement.style.border = "";
+              // And reset the background color
+              childElement.style.backgroundColor = "";
+            });
             childElement.appendChild(replyButton);
           }
         });
@@ -275,10 +347,11 @@
   }
 `);
   style.sheet.insertRule(`
-  .markdown > p, .markdown > pre {
+  .markdown > p, .markdown > pre, .markdown > strong, .markdown > ol > li {
     position: relative;
     padding-right: 20px; /* Adjust as needed based on the size of your button */
-    margin-right: 20px; 
+    margin-right: 30px; 
+    padding: 10px;
     box-sizing: border-box;
   }
 `);
@@ -293,7 +366,7 @@
   .reply-button {
     position: absolute;
     top: 0;
-    right: -1em;
+    right: 0;
     display: flex !important; 
     justify-content: center !important;
     align-items: flex-start !important;
@@ -302,13 +375,29 @@
 `);
 
   style.sheet.insertRule(`
-.reply-button:hover {
-  background: #e8eaeb;
+.li-reply-button {
+  position: absolute;
+  //top: 0;
+  right: 0;
+  display: flex !important; 
+  flex-direction: column-reverse;
+  // justify-content: center !important;
+  // align-items: flex-start !important;
 }
 `);
+  style.sheet.insertRule(`
+.reply-button:hover {
+  background: #d2d3d4;
+}
+`);
+  //   style.sheet.insertRule(`
+  // .li-reply-button:hover {
+  //   background: #d2d3d4;
+  // }
+  // `);
 
   style.sheet.insertRule(`
-.reply-icon {
+.reply-icon, .li-reply-icon {
   position: relative;
   top: 0;
 }
