@@ -174,7 +174,12 @@
         replyIcon.style.cursor = "pointer";
         replyButton.append(replyIcon);
         // Append the button to the child element
-
+        replyButton.addEventListener("click", function () {
+          // Get the text content of the parent element
+          let parentText = childElement.textContent || childElement.innerText;
+          // Log or use the text
+          console.log(parentText);
+        });
         if (childElement.tagName === "PRE") {
           // let childDiv = childElement.querySelector("div");
           // if (childDiv) {
@@ -223,6 +228,14 @@
           replyIcon.className = "reply-icon";
           replyIcon.style.cursor = "pointer";
           replyButton.append(replyIcon);
+
+          replyButton.addEventListener("click", function () {
+            // Get the text content of the parent element
+            let parentText = childElement.textContent || childElement.innerText;
+            // Log or use the text
+            //console.log(parentText);
+            simulateTyping(parentText);
+          });
           // Append the button to the child element
           if (childElement.tagName === "PRE") {
             // let childDiv = childElement.querySelector("div");
@@ -242,6 +255,14 @@
     }, timeout);
   };
 
+  function simulateTyping(text) {
+    //const message = arguments[0];
+    const textarea = document.querySelector("#prompt-textarea");
+    textarea.focus();
+    textarea.select();
+    document.execCommand("insertText", false, `In response to: "${text}"\n\n`);
+    //document.querySelector("#prompt-textarea").nextElementSibling.click();
+  }
   // Create a new style element
   let style = document.createElement("style");
 
