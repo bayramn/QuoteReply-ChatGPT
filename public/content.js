@@ -143,19 +143,22 @@
             //console.log(liElements);
             // For each 'li', create a reply button and append it
             liElements.forEach((li) => {
+              li.style.position = "relative";
+
               let liReplyButton = document.createElement("div");
               let liReplyIcon = document.createElement("img");
 
               liReplyButton.style.padding = "0.25em";
               liReplyButton.style.borderRadius = "20px";
-              liReplyButton.style.width = "25px";
+              liReplyButton.style.width = "30px";
               liReplyButton.style.height = "25px";
               liReplyButton.className = "li-reply-button"; // Add any classes you want for styling
               liReplyButton.title = "Reply Button";
 
               liReplyIcon.src = chrome.runtime.getURL("assets/reply.svg");
               liReplyIcon.as = "image";
-              liReplyIcon.style.width = "20px";
+              //liReplyIcon.style.width = "50px";
+              liReplyIcon.style = "border-radius: 10px; padding: 0.25em;";
               liReplyIcon.className = "li-reply-icon";
               liReplyIcon.style.cursor = "pointer";
               liReplyButton.append(liReplyIcon);
@@ -264,7 +267,7 @@
   style.sheet.insertRule(`
 .li-reply-button {
   position: absolute;
-  //top: 0;
+  top: 0.85em;
   right: 0;
   display: flex !important; 
   flex-direction: column-reverse;
@@ -277,11 +280,11 @@
   background: #d2d3d4;
 }
 `);
-  //   style.sheet.insertRule(`
-  // .li-reply-button:hover {
-  //   background: #d2d3d4;
-  // }
-  // `);
+  style.sheet.insertRule(`
+  .li-reply-icon:hover {
+    background: #d2d3d4;
+  }
+  `);
 
   style.sheet.insertRule(`
 .reply-icon, .li-reply-icon {
