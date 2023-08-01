@@ -75,9 +75,12 @@
             addInitialReplyButtons(0);
             // clearInterval(checkExist);
           }
+
+          // const isReplyButtonsExist = document.querySelector(".reply-button");
+          // if (!isReplyButtonsExist) console.log("Reply Buttons don't exist.");
         }, 500); // Check every 100ms
       }
-    }, 1000);
+    }, 1500);
   };
   const addInitialReplyButtons = (timeout) => {
     setTimeout(() => {
@@ -210,6 +213,7 @@
           }
         });
       });
+
       let chatContainer = document.querySelector(
         ".flex.flex-col.text-sm.dark\\:bg-gray-800"
       );
@@ -267,7 +271,8 @@
   style.sheet.insertRule(`
 .li-reply-button {
   position: absolute;
-  top: 0.85em;
+  //top: 0.85em;
+  top: 2em;
   right: 0;
   display: flex !important; 
   flex-direction: column-reverse;
