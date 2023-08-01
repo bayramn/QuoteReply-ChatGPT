@@ -48,7 +48,10 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   //console.log("tabId: ", tabId);
   //console.log("tab: ", tab);
   // Send new video to content script when youtube.com/watch page is loaded
-  if (tab.url && tab.url.includes("chat.openai.com/c")) {
+  if (
+    (tab.url && tab.url.includes("chat.openai.com")) ||
+    tab.url.includes("https://chat.openai.com/?model=")
+  ) {
     // console.log(
     //   "background script is running for 'chat.openai.com/c' page ..."
     // );
@@ -83,7 +86,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   }
 });
 
-// chrome.action.onClicked.addListener((tab) => {
-//   console.log("Extension is clicked...");
-//   chrome.tabs.create({ url: "https://chat.openai.com" }); // replace with your chat URL
-// });
+chrome.action.onClicked.addListener((tab) => {
+  console.log("Extension is clicked...");
+  chrome.tabs.create({ url: "https://chat.openai.com" }); // replace with your chat URL
+});

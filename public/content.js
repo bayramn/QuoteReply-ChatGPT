@@ -222,7 +222,7 @@
     const textarea = document.querySelector("#prompt-textarea");
     textarea.focus();
     textarea.select();
-    document.execCommand("insertText", false, `In response to: "${text}"\n\n`);
+    document.execCommand("insertText", false, `> "${text}"\n\n`);
     //document.querySelector("#prompt-textarea").nextElementSibling.click();
   }
   // Create a new style element

@@ -4,8 +4,6 @@
   "description": "Quote reply to ChatGPT.",
   "version": "1.0.0",
   "action": {
-    "default_popup": "popup.html",
-    "default_title": "Open",
     "default_icon": {
       "16": "assets/quotereply-chatgpt-icon-16.png",
       "48": "assets/quotereply-chatgpt-icon-48.png",
