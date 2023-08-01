@@ -15,7 +15,7 @@ let userData = {
 let userBookmarks = [];
 let userNotes = [];
 let completedTabs = {};
-let lastVideoId;
+let lastChatId;
 console.log("background script...", new Date());
 
 // chrome.tabs.query({ url: "*://chat.openai.com/*" }, function (tabs) {
@@ -39,40 +39,47 @@ function simulateTyping() {
   document.querySelector("#prompt-textarea").nextElementSibling.click();
 }
 
-chrome.tabs.onCreated.addListener((tab) => {
-  // Your code here, which will run when a new tab is opened
-  chrome.action.setBadgeText({ text: "" });
-});
+// chrome.tabs.onCreated.addListener((tab) => {
+//   // Your code here, which will run when a new tab is opened
+//   chrome.action.setBadgeText({ text: "" });
+// });
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   //console.log("tabId: ", tabId);
   //console.log("tab: ", tab);
   // Send new video to content script when youtube.com/watch page is loaded
   if (tab.url && tab.url.includes("chat.openai.com/c")) {
-    console.log(
-      "background script is running for 'chat.openai.com/c' page ..."
-    );
+    // console.log(
+    //   "background script is running for 'chat.openai.com/c' page ..."
+    // );
     const chatId = tab.url.split("c/")[1];
-    //console.log(chatId);
+
     if (
       changeInfo.status === "complete" &&
       tab.status === "complete" &&
       tab.url !== undefined
     ) {
+      console.log(
+        "------------------------------------------------------------------------"
+      );
+      console.log(chatId);
       console.log("Page is fully loaded");
-      console.log("NEW chatId is being send from background.js");
+      console.log("NEW chatId is being sent from background.js");
       chrome.tabs.sendMessage(tabId, {
         url: tab.url,
         type: "NEW",
         chatId: chatId,
       });
     }
-  }
-});
-
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === "openTab") {
-    chrome.tabs.create({ url: request.url });
+    // else if (chatId !== lastChatId) {
+    //   console.log("NEW chatId is being send from background.js");
+    //   chrome.tabs.sendMessage(tabId, {
+    //     url: tab.url,
+    //     type: "NEW",
+    //     chatId: chatId,
+    //   });
+    // }
+    lastChatId = chatId;
   }
 });
 
