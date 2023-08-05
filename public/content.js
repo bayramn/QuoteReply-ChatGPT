@@ -92,7 +92,7 @@
       markdownDivs.forEach((markdownDiv) => {
         // Select all direct child p and pre elements
         let childElements = markdownDiv.querySelectorAll(
-          ":scope > p, :scope > pre, :scope > ol, :scope > strong, :scope > li"
+          ":scope > p, :scope > pre, :scope > ol, :scope > ul, :scope > strong, :scope > li"
         );
         // Loop through each child element and append a button
         childElements.forEach((childElement) => {
@@ -140,7 +140,10 @@
             //   // If there is a div inside the pre tag
             //   childDiv.appendChild(replyButton);
             // }
-          } else if (childElement.tagName === "OL") {
+          } else if (
+            childElement.tagName === "OL" ||
+            childElement.tagName === "UL"
+          ) {
             // If it is, get all of its 'li' children
             let liElements = childElement.querySelectorAll("li");
             //console.log(liElements);
@@ -241,11 +244,11 @@
   }
 `);
   style.sheet.insertRule(`
-  .markdown > p, .markdown > pre, .markdown > strong, .markdown > ol > li {
+  .markdown > p, .markdown > pre, .markdown > strong, .markdown > ol > li, .markdown > ul > li {
     position: relative;
     padding-right: 20px; /* Adjust as needed based on the size of your button */
     margin-right: 30px; 
-    padding: 10px;
+    padding: 0 25px;
     box-sizing: border-box;
   }
 `);

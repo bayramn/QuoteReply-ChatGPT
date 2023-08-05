@@ -43,8 +43,6 @@
     "matches": []
   },  
     "permissions": [
-    "storage",
-    "tabs",
-    "scripting"
+    "tabs"
   ] 
 }
