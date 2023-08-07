@@ -3,6 +3,8 @@
 (async () => {
   console.log("Content script is running!");
   let previousChildrenCount = 0;
+  let colorScheme;
+
   chrome.runtime.onMessage.addListener((obj, sender, sendResponse) => {
     const { type, chatId } = obj;
     console.log("New chatId: ", chatId);
@@ -126,6 +128,22 @@
             //console.log(parentText);
             simulateTyping(parentText);
           });
+          replyButton.addEventListener("mouseenter", function () {
+            //replyButton.style.borderRadius = "15px";
+            colorScheme = document.querySelector("html").className;
+            if (colorScheme === "dark") {
+              replyButton.style.backgroundColor = "#e8eaeb79"; // Dark gray background
+            } else if (colorScheme === "light") {
+              replyButton.style.backgroundColor = "#d2d3d4"; // Light gray background
+            }
+          });
+
+          replyButton.addEventListener("mouseleave", function () {
+            // Remove the border when the mouse leaves the button
+            //li.style.border = "";
+            // And reset the background color
+            replyButton.style.backgroundColor = "";
+          });
 
           // childElement.addEventListener("dblclick", function () {
           //   let elementText =
@@ -182,10 +200,14 @@
                 // Add a border to the parent element when the mouse hovers over the button
                 //childElement.style.border = "1px solid black";
                 li.style.borderRadius = "15px";
-
                 // Or change the background color
+                colorScheme = document.querySelector("html").className;
                 //childElement.style.backgroundColor = "#e8eaeb"; // Light gray background
-                li.style.backgroundColor = "#edf0f2"; // Light gray background
+                if (colorScheme === "dark") {
+                  li.style.backgroundColor = "#d2d2d41b"; // Dark gray background
+                } else if (colorScheme === "light") {
+                  li.style.backgroundColor = "#e8eaeb"; // Light gray background
+                }
               });
 
               li.addEventListener("mouseleave", function () {
@@ -200,10 +222,13 @@
               // Add a border to the parent element when the mouse hovers over the button
               //childElement.style.border = "1px solid black";
               childElement.style.borderRadius = "15px";
-
               // Or change the background color
-              //childElement.style.backgroundColor = "#e8eaeb"; // Light gray background
-              childElement.style.backgroundColor = "#edf0f2"; // Light gray background
+              colorScheme = document.querySelector("html").className;
+              if (colorScheme === "dark") {
+                childElement.style.backgroundColor = "#d2d2d41b"; // Dark gray background
+              } else if (colorScheme === "light") {
+                childElement.style.backgroundColor = "#e8eaeb"; // Light gray background
+              }
             });
 
             childElement.addEventListener("mouseleave", function () {
@@ -283,11 +308,11 @@
   // align-items: flex-start !important;
 }
 `);
-  style.sheet.insertRule(`
-.reply-button:hover {
-  background: #d2d3d4;
-}
-`);
+  //   style.sheet.insertRule(`
+  // .reply-button:hover {
+  //   background: #d2d3d4;
+  // }
+  // `);
   style.sheet.insertRule(`
   .li-reply-icon:hover {
     background: #d2d3d4;
