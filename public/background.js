@@ -1,22 +1,6 @@
 /*global chrome*/
-let baseUrl = "https://www.lanterapp.com";
-//console.log("chrome.runtime.id: ", chrome.runtime.id);
-if (chrome.runtime.id === "dddkbkfbiikdebcdafdnjcimkooehmfb") {
-  baseUrl = "https://www.lanterapp.com";
-} else {
-  baseUrl = "http://localhost:5000";
-}
-//console.log("baseUrl: ", baseUrl);
-let userData = {
-  token: undefined,
-  user: undefined,
-  loading: false,
-};
-let userBookmarks = [];
-let userNotes = [];
 let completedTabs = {};
 let lastChatId;
-console.log("background script...", new Date());
 
 // chrome.tabs.query({ url: "*://chat.openai.com/*" }, function (tabs) {
 //   if (tabs.length) {
@@ -39,15 +23,7 @@ function simulateTyping() {
   document.querySelector("#prompt-textarea").nextElementSibling.click();
 }
 
-// chrome.tabs.onCreated.addListener((tab) => {
-//   // Your code here, which will run when a new tab is opened
-//   chrome.action.setBadgeText({ text: "" });
-// });
-
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  //console.log("tabId: ", tabId);
-  //console.log("tab: ", tab);
-  // Send new video to content script when youtube.com/watch page is loaded
   if (
     (tab.url && tab.url.includes("chat.openai.com")) ||
     tab.url.includes("https://chat.openai.com/?model=")
@@ -62,31 +38,18 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
       tab.status === "complete" &&
       tab.url !== undefined
     ) {
-      console.log(
-        "------------------------------------------------------------------------"
-      );
-      console.log(chatId);
       console.log("Page is fully loaded");
-      console.log("NEW chatId is being sent from background.js");
+      console.log("NEW chatId is being sent from background.js: ", chatId);
       chrome.tabs.sendMessage(tabId, {
         url: tab.url,
         type: "NEW",
         chatId: chatId,
       });
     }
-    // else if (chatId !== lastChatId) {
-    //   console.log("NEW chatId is being send from background.js");
-    //   chrome.tabs.sendMessage(tabId, {
-    //     url: tab.url,
-    //     type: "NEW",
-    //     chatId: chatId,
-    //   });
-    // }
     lastChatId = chatId;
   }
 });
 
 chrome.action.onClicked.addListener((tab) => {
-  console.log("Extension is clicked...");
-  chrome.tabs.create({ url: "https://chat.openai.com" }); // replace with your chat URL
+  chrome.tabs.create({ url: "https://chat.openai.com" });
 });

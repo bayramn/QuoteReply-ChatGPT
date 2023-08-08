@@ -7,19 +7,10 @@
 
   chrome.runtime.onMessage.addListener((obj, sender, sendResponse) => {
     const { type, chatId } = obj;
-    console.log("New chatId: ", chatId);
+    //console.log("New chatId: ", chatId);
     if (type === "NEW") {
-      // currentVideo = videoId;
       newChatLoaded(chatId);
     } else if (type === "PLAY") {
-      // if (currentVideo !== videoId) {
-      //   const videoUrl = `https://www.youtube.com/watch?v=${videoId}&t=${timestamp}s`;
-      //   //chrome.tabs.create({ url: videoUrl });
-      //   chrome.runtime.sendMessage({ action: "openTab", url: videoUrl });
-      // } else {
-      //   youtubePlayer.currentTime = timestamp;
-      //   youtubePlayer.play();
-      // }
     }
   });
   function startObserver(chatContainer) {
@@ -27,10 +18,6 @@
     let observer = new MutationObserver((mutationsList, observer) => {
       for (let mutation of mutationsList) {
         if (mutation.type === "attributes") {
-          // console.log(
-          //   "Attribute changed: ",
-          //   mutation.target.parentNode.lastElementChild
-          // );
           if (mutation.target === mutation.target.parentNode.lastElementChild)
             if (
               //mutation.target.childNodes[0].nodeName === "BUTTON" &&
@@ -40,7 +27,6 @@
               console.log("SVG buttons are visible..");
               observer.disconnect();
               addInitialReplyButtons(0);
-              // Add your logic here
             }
         }
       }
@@ -50,7 +36,6 @@
       attributes: true,
       childList: true,
       subtree: true,
-      // characterData: true,
     });
   }
   const newChatLoaded = () => {
@@ -59,7 +44,7 @@
       // Check if the chat container exists
       let chatContainer = document.querySelector(
         ".flex.flex-col.text-sm.dark\\:bg-gray-800"
-      ); // replace '.markdown' with actual chat container selector
+      );
       if (chatContainer) {
         // If it exists, start the observer
         addInitialReplyButtons(0);
@@ -80,7 +65,7 @@
 
           // const isReplyButtonsExist = document.querySelector(".reply-button");
           // if (!isReplyButtonsExist) console.log("Reply Buttons don't exist.");
-        }, 500); // Check every 100ms
+        }, 500); // Check every 500ms
       }
     }, 1500);
   };
@@ -109,12 +94,7 @@
           replyButton.style.height = "25px";
           replyButton.className = "reply-button"; // Add any classes you want for styling
           replyButton.title = "Reply Button";
-          replyIcon.src = chrome.runtime.getURL(
-            "assets/reply.svg"
-            // isYoutubeThemeDark()
-            //   ? "assets/reply.svg"
-            //   : "assets/reply.svg"
-          );
+          replyIcon.src = chrome.runtime.getURL("assets/reply.svg");
           replyIcon.as = "image";
           replyIcon.style.width = "20px";
           replyIcon.className = "reply-icon";
@@ -153,11 +133,6 @@
 
           // Append the button to the child element
           if (childElement.tagName === "PRE") {
-            // let childDiv = childElement.querySelector("div");
-            // if (childDiv) {
-            //   // If there is a div inside the pre tag
-            //   childDiv.appendChild(replyButton);
-            // }
           } else if (
             childElement.tagName === "OL" ||
             childElement.tagName === "UL"
@@ -250,12 +225,10 @@
   };
 
   function simulateTyping(text) {
-    //const message = arguments[0];
     const textarea = document.querySelector("#prompt-textarea");
     textarea.focus();
     textarea.select();
     document.execCommand("insertText", false, `> "${text}"\n\n`);
-    //document.querySelector("#prompt-textarea").nextElementSibling.click();
   }
   // Create a new style element
   let style = document.createElement("style");
