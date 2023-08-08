@@ -1,15 +1,15 @@
 # QuoteReply ChatGPT
 
-| Chrome                                                                                                                                                                |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <p align="center"><a href="https://chrome.google.com/webstore/detail/quotereply-chatgpt/iohbnkcaifeikbggjmcbamcbhojmfpca"><img src="/promo/chrome_64x64.png"></a></p> |
-| [Download](https://chrome.google.com/webstore/detail/quotereply-chatgpt/iohbnkcaifeikbggjmcbamcbhojmfpca)                                                             |
+| Chrome                                                                                                                                                                 |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p align="center"><a href="https://chrome.google.com/webstore/detail/quotereply-chatgpt/iohbnkcaifeikbggjmcbamcbhojmfpca"><img src="/assets/chrome_64x64.png"></a></p> |
+| [Download](https://chrome.google.com/webstore/detail/quotereply-chatgpt/iohbnkcaifeikbggjmcbamcbhojmfpca)                                                              |
 
 # ChatGPT Reply Button Extension
 
 ## Introduction
 
-This Chrome extension provides a reply button on each response from ChatGPT, allowing users to easily quote and refer to previous responses from the AI.
+This Chrome extension adds a reply button on each response from ChatGPT, allowing easily quote and refer to previous responses from the chat.
 
 ## Features
 
@@ -22,9 +22,9 @@ Note: This extension is not affiliated with ChatGPT and OpenAI.
 
 ## Usage
 
-1. Visit OpenAI Chat.
-2. You should see reply buttons appended next to the AI's responses.
-3. Clicking a reply button will let you quote the AI's response.
+1. Visit https://chat.openai.com.
+2. You should see reply buttons appended next to the responses.
+3. Clicking a reply button will let you quote the response.
 
 ## Dev
 
