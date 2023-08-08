@@ -43,3 +43,7 @@ npm run dev
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you'd like to change.
+
+---
+
+[<a href="https://www.buymeacoffee.com/bayramn" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="45px" width="162px" alt="Buy Me A Coffee"></a>](https://www.buymeacoffee.com/bayramn)
