@@ -174,6 +174,13 @@
                 //console.log(parentText);
                 simulateTyping(elementText);
               });
+              li.addEventListener("click", function () {
+                // Get the text content of the parent element
+                let elementText = li.textContent || li.innerText;
+                // Log or use the text
+                //console.log(parentText);
+                simulateTyping(elementText);
+              });
               li.addEventListener("mouseenter", function () {
                 childElement.style.cursor = "pointer";
                 // Add a border to the parent element when the mouse hovers over the button
@@ -198,12 +205,12 @@
               });
             });
           } else {
-            // childElement.addEventListener("click", function () {
-            //   // Get the text content of the parent element
-            //   let parentText =
-            //     childElement.textContent || childElement.innerText;
-            //   simulateTyping(parentText);
-            // });
+            childElement.addEventListener("click", function () {
+              // Get the text content of the parent element
+              let parentText =
+                childElement.textContent || childElement.innerText;
+              simulateTyping(parentText);
+            });
             childElement.addEventListener("mouseenter", function () {
               childElement.style.cursor = "pointer";
               // Add a border to the parent element when the mouse hovers over the button
@@ -212,7 +219,6 @@
               // Or change the background color
               colorScheme = document.querySelector("html").className;
               if (colorScheme === "dark gizmo") {
-                // childElement.style.backgroundColor = "#d2d2d41b"; // Dark gray background
                 childElement.style.backgroundColor = "#d2d2d441"; // Dark gray background
                 // } else if (colorScheme === "light") {
               } else {
