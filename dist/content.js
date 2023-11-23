@@ -111,6 +111,7 @@
             simulateTyping(parentText);
           });
           replyButton.addEventListener("mouseenter", function () {
+            childElement.style.backgroundColor = "#e8eaeb79";
             //replyButton.style.borderRadius = "15px";
             colorScheme = document.querySelector("html").className;
             if (colorScheme === "dark") {
@@ -174,6 +175,7 @@
                 simulateTyping(elementText);
               });
               li.addEventListener("mouseenter", function () {
+                li.style.backgroundColor = "#e8eaeb79";
                 // Add a border to the parent element when the mouse hovers over the button
                 //childElement.style.border = "1px solid black";
                 li.style.borderRadius = "15px";
@@ -195,7 +197,14 @@
               });
             });
           } else {
+            // childElement.addEventListener("click", function () {
+            //   // Get the text content of the parent element
+            //   let parentText =
+            //     childElement.textContent || childElement.innerText;
+            //   simulateTyping(parentText);
+            // });
             childElement.addEventListener("mouseenter", function () {
+              childElement.style.backgroundColor = "#e8eaeb79";
               // Add a border to the parent element when the mouse hovers over the button
               //childElement.style.border = "1px solid black";
               childElement.style.borderRadius = "15px";
