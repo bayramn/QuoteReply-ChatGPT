@@ -111,12 +111,12 @@
             simulateTyping(parentText);
           });
           replyButton.addEventListener("mouseenter", function () {
-            childElement.style.backgroundColor = "#e8eaeb79";
             //replyButton.style.borderRadius = "15px";
             colorScheme = document.querySelector("html").className;
-            if (colorScheme === "dark") {
-              replyButton.style.backgroundColor = "#e8eaeb79"; // Dark gray background
-            } else if (colorScheme === "light") {
+            if (colorScheme === "dark gizmo") {
+              replyButton.style.backgroundColor = "#d2d2d441"; // Dark gray background
+            } else {
+              //} else if (colorScheme === "light") {
               replyButton.style.backgroundColor = "#d2d3d4"; // Light gray background
             }
           });
@@ -175,16 +175,17 @@
                 simulateTyping(elementText);
               });
               li.addEventListener("mouseenter", function () {
-                li.style.backgroundColor = "#e8eaeb79";
+                childElement.style.cursor = "pointer";
                 // Add a border to the parent element when the mouse hovers over the button
                 //childElement.style.border = "1px solid black";
                 li.style.borderRadius = "15px";
                 // Or change the background color
                 colorScheme = document.querySelector("html").className;
                 //childElement.style.backgroundColor = "#e8eaeb"; // Light gray background
-                if (colorScheme === "dark") {
-                  li.style.backgroundColor = "#d2d2d41b"; // Dark gray background
-                } else if (colorScheme === "light") {
+                if (colorScheme === "dark gizmo") {
+                  li.style.backgroundColor = "#d2d2d441"; // Dark gray background
+                } else {
+                  // } else if (colorScheme === "light") {
                   li.style.backgroundColor = "#e8eaeb"; // Light gray background
                 }
               });
@@ -204,15 +205,17 @@
             //   simulateTyping(parentText);
             // });
             childElement.addEventListener("mouseenter", function () {
-              childElement.style.backgroundColor = "#e8eaeb79";
+              childElement.style.cursor = "pointer";
               // Add a border to the parent element when the mouse hovers over the button
               //childElement.style.border = "1px solid black";
               childElement.style.borderRadius = "15px";
               // Or change the background color
               colorScheme = document.querySelector("html").className;
-              if (colorScheme === "dark") {
-                childElement.style.backgroundColor = "#d2d2d41b"; // Dark gray background
-              } else if (colorScheme === "light") {
+              if (colorScheme === "dark gizmo") {
+                // childElement.style.backgroundColor = "#d2d2d41b"; // Dark gray background
+                childElement.style.backgroundColor = "#d2d2d441"; // Dark gray background
+                // } else if (colorScheme === "light") {
+              } else {
                 childElement.style.backgroundColor = "#e8eaeb"; // Light gray background
               }
             });
