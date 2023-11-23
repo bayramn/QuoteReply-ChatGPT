@@ -22,8 +22,10 @@
             if (
               //mutation.target.childNodes[0].nodeName === "BUTTON" &&
               mutation.target.className ===
-              "text-gray-400 flex self-end lg:self-center justify-center mt-2 gap-2 md:gap-3 lg:gap-1 lg:absolute lg:top-0 lg:translate-x-full lg:right-0 lg:mt-0 lg:pl-2 visible"
+              "text-gray-400 flex self-end lg:self-center justify-center gizmo:lg:justify-start mt-2 gizmo:mt-0 visible gap-1"
+              // "text-gray-400 flex self-end lg:self-center justify-center mt-2 gap-2 md:gap-3 lg:gap-1 lg:absolute lg:top-0 lg:translate-x-full lg:right-0 lg:mt-0 lg:pl-2 visible"
             ) {
+              //console.log(mutation.target);
               console.log("SVG buttons are visible..");
               observer.disconnect();
               addInitialReplyButtons(0);
