@@ -170,18 +170,22 @@
               // Append the reply button to the 'li'
               li.appendChild(liReplyButton);
               //console.log("li: ", li);
-              liReplyButton.addEventListener("click", function () {
+              liReplyButton.addEventListener("click", (event) => {
+                // Stop the click event from bubbling up to the parent elements
+                event.stopPropagation();
                 // Get the text content of the parent element
                 let elementText = li.textContent || li.innerText;
                 // Log or use the text
                 //console.log(parentText);
                 simulateTyping(elementText);
               });
-              li.addEventListener("click", function () {
+              li.addEventListener("click", (event) => {
+                // Stop the click event from bubbling up to the parent elements
+                event.stopPropagation();
                 // Get the text content of the parent element
                 let elementText = li.textContent || li.innerText;
                 // Log or use the text
-                //console.log(parentText);
+                console.log(event.currentTarget.textContent);
                 simulateTyping(elementText);
               });
               li.addEventListener("mouseenter", function () {
