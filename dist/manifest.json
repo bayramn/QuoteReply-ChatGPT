@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "QuoteReply ChatGPT",
   "description": "Quote reply to ChatGPT.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "action": {
     "default_icon": {
       "16": "assets/quotereply-chatgpt-icon-16.png",

@@ -116,7 +116,7 @@
           replyButton.addEventListener("mouseenter", function () {
             //replyButton.style.borderRadius = "15px";
             colorScheme = document.querySelector("html").className;
-            if (colorScheme === "dark gizmo") {
+            if (colorScheme === "dark") {
               replyButton.style.backgroundColor = "#d2d2d441"; // Dark gray background
             } else {
               //} else if (colorScheme === "light") {
@@ -192,11 +192,11 @@
                 // Or change the background color
                 colorScheme = document.querySelector("html").className;
                 //childElement.style.backgroundColor = "#e8eaeb"; // Light gray background
-                if (colorScheme === "dark gizmo") {
-                  li.style.backgroundColor = "#d2d2d441"; // Dark gray background
+                if (colorScheme === "dark") {
+                  li.style.backgroundColor = "#bdbdbe18"; // Dark gray background
                 } else {
                   // } else if (colorScheme === "light") {
-                  li.style.backgroundColor = "#e8eaeb"; // Light gray background
+                  li.style.backgroundColor = "#f9f9f9"; // Light gray background
                 }
               });
 
@@ -221,11 +221,11 @@
               childElement.style.borderRadius = "15px";
               // Or change the background color
               colorScheme = document.querySelector("html").className;
-              if (colorScheme === "dark gizmo") {
-                childElement.style.backgroundColor = "#d2d2d441"; // Dark gray background
+              if (colorScheme === "dark") {
+                childElement.style.backgroundColor = "#bdbdbe18"; // Dark gray background
                 // } else if (colorScheme === "light") {
               } else {
-                childElement.style.backgroundColor = "#e8eaeb"; // Light gray background
+                childElement.style.backgroundColor = "#f9f9f9"; // Light gray background
               }
             });
 
