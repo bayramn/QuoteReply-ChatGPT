@@ -22,7 +22,8 @@
             if (
               //mutation.target.childNodes[0].nodeName === "BUTTON" &&
               mutation.target.className ===
-              "text-gray-400 flex self-end lg:self-center justify-center gizmo:lg:justify-start mt-2 gizmo:mt-0 visible gap-1"
+              "text-gray-400 flex self-end lg:self-center justify-center lg:justify-start mt-0 gap-1 visible"
+              //"text-gray-400 flex self-end lg:self-center justify-center gizmo:lg:justify-start mt-2 gizmo:mt-0 gap-1 visible"
               // "text-gray-400 flex self-end lg:self-center justify-center mt-2 gap-2 md:gap-3 lg:gap-1 lg:absolute lg:top-0 lg:translate-x-full lg:right-0 lg:mt-0 lg:pl-2 visible"
             ) {
               //console.log(mutation.target);
@@ -45,7 +46,8 @@
     setTimeout(() => {
       // Check if the chat container exists
       let chatContainer = document.querySelector(
-        ".flex.flex-col.text-sm.dark\\:bg-gray-800"
+        // ".flex.flex-col.text-sm.dark\\:bg-gray-800"
+        ".flex.flex-col.pb-9.text-sm"
       );
       if (chatContainer) {
         // If it exists, start the observer
@@ -55,7 +57,8 @@
         setTimeout(() => {
           //let checkExist = setInterval(function () {
           chatContainer = document.querySelector(
-            ".flex.flex-col.text-sm.dark\\:bg-gray-800"
+            ".flex.flex-col.pb-9.text-sm"
+            //".flex.flex-col.text-sm.dark\\:bg-gray-800"
           );
           //console.log("chatContainer: ", chatContainer);
           if (chatContainer) {
@@ -63,7 +66,7 @@
             // When it exists, start the observer and clear the interval
             addInitialReplyButtons(0);
             // clearInterval(checkExist);
-          }
+          } else console.log("chatContainer doesn't exist");
 
           // const isReplyButtonsExist = document.querySelector(".reply-button");
           // if (!isReplyButtonsExist) console.log("Reply Buttons don't exist.");
