@@ -185,8 +185,8 @@
                 // Get the text content of the parent element
                 let elementText = li.textContent || li.innerText;
                 // Log or use the text
-                console.log(event.currentTarget.textContent);
-                simulateTyping(elementText);
+                //console.log(event.currentTarget.textContent);
+                //simulateTyping(elementText);
               });
               li.addEventListener("mouseenter", function () {
                 childElement.style.cursor = "pointer";
@@ -216,7 +216,24 @@
               // Get the text content of the parent element
               let parentText =
                 childElement.textContent || childElement.innerText;
-              simulateTyping(parentText);
+              //simulateTyping(parentText);
+
+              if (window.getSelection && document.createRange) {
+                const selection = window.getSelection();
+                const range = document.createRange();
+                range.selectNodeContents(childElement);
+                selection.removeAllRanges();
+                selection.addRange(range);
+
+                // This is where you try to trigger the website's quote button
+                setTimeout(() => {
+                  const quoteReplyButton = document.querySelector(
+                    "#__next > div.relative.z-0.flex.h-full.w-full.overflow-hidden > div.relative.flex.h-full.max-w-full.flex-1.flex-col.overflow-hidden > main > div.flex.h-full.flex-col > div.flex-1.overflow-hidden > div > div > div > div:nth-child(177) > div > div > div.relative.flex.w-full.flex-col.lg\\:w-\\[calc\\(100\\%-115px\\)\\].agent-turn > div.absolute > span > button"
+                  );
+                  console.log(quoteReplyButton);
+                  quoteReplyButton.click();
+                }, 500);
+              }
             });
             childElement.addEventListener("mouseenter", function () {
               childElement.style.cursor = "pointer";
