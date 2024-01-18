@@ -138,7 +138,7 @@
                 );
                 //console.log(builtinQuoteReplyButton);
                 builtinQuoteReplyButton.click();
-              }, 500);
+              }, 100);
             }
           });
           replyButton.addEventListener("mouseenter", function () {
@@ -232,7 +232,7 @@
                     );
                     //console.log(builtinQuoteReplyButton);
                     builtinQuoteReplyButton.click();
-                  }, 500);
+                  }, 100);
                 }
               });
               li.addEventListener("click", (event) => {
