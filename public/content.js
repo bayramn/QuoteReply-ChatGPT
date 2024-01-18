@@ -111,7 +111,35 @@
             let parentText = childElement.textContent || childElement.innerText;
             // Log or use the text
             //console.log(parentText);
-            simulateTyping(parentText);
+            //simulateTyping(parentText);
+            console.log("Selecting text");
+            if (window.getSelection && document.createRange) {
+              const selection = window.getSelection();
+              const range = document.createRange();
+              //range.selectNodeContents(childElement);
+              selection.removeAllRanges();
+
+              // Set the start of the range to the start of the p element
+              range.setStart(childElement, 0);
+
+              // Check if the last child is a DIV and set the end of the range accordingly
+              const lastChild = childElement.lastChild;
+              if (lastChild && lastChild.tagName === "DIV") {
+                range.setEndBefore(lastChild);
+              } else {
+                range.setEndAfter(lastChild);
+              }
+              selection.addRange(range);
+
+              // This is where you try to trigger the website's quote button
+              setTimeout(() => {
+                const builtinQuoteReplyButton = document.querySelector(
+                  '.absolute > span[data-state="closed"] > .btn.relative.btn-neutral.btn-small'
+                );
+                //console.log(builtinQuoteReplyButton);
+                builtinQuoteReplyButton.click();
+              }, 500);
+            }
           });
           replyButton.addEventListener("mouseenter", function () {
             //replyButton.style.borderRadius = "15px";
@@ -177,7 +205,35 @@
                 let elementText = li.textContent || li.innerText;
                 // Log or use the text
                 //console.log(parentText);
-                simulateTyping(elementText);
+                //simulateTyping(elementText);
+
+                if (window.getSelection && document.createRange) {
+                  const selection = window.getSelection();
+                  const range = document.createRange();
+                  //range.selectNodeContents(childElement);
+                  selection.removeAllRanges();
+
+                  // Set the start of the range to the start of the p element
+                  range.setStart(li, 0);
+
+                  // Check if the last child is a DIV and set the end of the range accordingly
+                  const lastChild = li.lastChild;
+                  if (lastChild && lastChild.tagName === "DIV") {
+                    range.setEndBefore(lastChild);
+                  } else {
+                    range.setEndAfter(lastChild);
+                  }
+                  selection.addRange(range);
+
+                  // This is where you try to trigger the website's quote button
+                  setTimeout(() => {
+                    const builtinQuoteReplyButton = document.querySelector(
+                      '.absolute > span[data-state="closed"] > .btn.relative.btn-neutral.btn-small'
+                    );
+                    //console.log(builtinQuoteReplyButton);
+                    builtinQuoteReplyButton.click();
+                  }, 500);
+                }
               });
               li.addEventListener("click", (event) => {
                 // Stop the click event from bubbling up to the parent elements
@@ -217,23 +273,6 @@
               let parentText =
                 childElement.textContent || childElement.innerText;
               //simulateTyping(parentText);
-
-              if (window.getSelection && document.createRange) {
-                const selection = window.getSelection();
-                const range = document.createRange();
-                range.selectNodeContents(childElement);
-                selection.removeAllRanges();
-                selection.addRange(range);
-
-                // This is where you try to trigger the website's quote button
-                setTimeout(() => {
-                  const quoteReplyButton = document.querySelector(
-                    "#__next > div.relative.z-0.flex.h-full.w-full.overflow-hidden > div.relative.flex.h-full.max-w-full.flex-1.flex-col.overflow-hidden > main > div.flex.h-full.flex-col > div.flex-1.overflow-hidden > div > div > div > div:nth-child(177) > div > div > div.relative.flex.w-full.flex-col.lg\\:w-\\[calc\\(100\\%-115px\\)\\].agent-turn > div.absolute > span > button"
-                  );
-                  console.log(quoteReplyButton);
-                  quoteReplyButton.click();
-                }, 500);
-              }
             });
             childElement.addEventListener("mouseenter", function () {
               childElement.style.cursor = "pointer";
