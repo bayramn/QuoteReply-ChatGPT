@@ -18,11 +18,14 @@
     let observer = new MutationObserver((mutationsList, observer) => {
       for (let mutation of mutationsList) {
         if (mutation.type === "attributes") {
+          //console.log(mutation.target);
           if (mutation.target === mutation.target.parentNode.lastElementChild)
             if (
               //mutation.target.childNodes[0].nodeName === "BUTTON" &&
               mutation.target.className ===
-              "text-gray-400 flex self-end lg:self-center justify-center lg:justify-start mt-0 gap-1 visible"
+              "text-gray-400 flex self-end lg:self-center justify-center lg:justify-start mt-0 -ml-1 visible"
+              // old svg buttons that are located under each chat response
+              //"text-gray-400 flex self-end lg:self-center justify-center lg:justify-start mt-0 gap-1 visible"
               //"text-gray-400 flex self-end lg:self-center justify-center gizmo:lg:justify-start mt-2 gizmo:mt-0 gap-1 visible"
               // "text-gray-400 flex self-end lg:self-center justify-center mt-2 gap-2 md:gap-3 lg:gap-1 lg:absolute lg:top-0 lg:translate-x-full lg:right-0 lg:mt-0 lg:pl-2 visible"
             ) {
@@ -60,7 +63,7 @@
             ".flex.flex-col.pb-9.text-sm"
             //".flex.flex-col.text-sm.dark\\:bg-gray-800"
           );
-          //console.log("chatContainer: ", chatContainer);
+          console.log("chatContainer: ", chatContainer);
           if (chatContainer) {
             console.log("Checking chatContainer...");
             // When it exists, start the observer and clear the interval
@@ -301,7 +304,9 @@
       });
 
       let chatContainer = document.querySelector(
-        ".flex.flex-col.text-sm.dark\\:bg-gray-800"
+        ".flex.flex-col.pb-9.text-sm"
+        //".flex.flex-col.text-sm.dark\\:bg-gray-800"
+        // ".flex-col.gap-1.md:gap-3"
       );
       startObserver(chatContainer);
     }, timeout);
