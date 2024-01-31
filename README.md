@@ -20,7 +20,7 @@ This Chrome extension adds a reply button on each response from ChatGPT, allowin
 
 Note: This extension is not affiliated with ChatGPT and OpenAI.
 
-![Image of ChatGPT's response](/assets/screenshot-1.jpg)
+![Image of ChatGPT's response](/assets/screenshot-1.png)
 
 ## Demo
 
