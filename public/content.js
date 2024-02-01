@@ -179,7 +179,9 @@
             //console.log(liElements);
             // For each 'li', create a reply button and append it
             liElements.forEach((li) => {
+              li.style = "padding-right: 1em;";
               li.style.position = "relative";
+              li.classList.add("specialClass");
 
               let liReplyButton = document.createElement("div");
               let liReplyIcon = document.createElement("img");
@@ -356,7 +358,13 @@
     flex-direction: column-reverse;
   }
 `);
-
+  //Decreasing padding of number counter of ::before inside li element
+  style.sheet.insertRule(`
+ol li.specialClass::before {
+  padding-right: 0.25rem;
+  //color: red;
+}
+`);
   style.sheet.insertRule(`
 .li-reply-button {
   position: absolute;
